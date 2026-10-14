@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Profile from "./homepage/profile.astro";
+import Music from "./homepage/music.astro";
+import TopEight from "./homepage/top-eight.astro";
+import Status from "./homepage/status.astro";
+import Featured from "./homepage/featured.astro";
+import Board from "./homepage/board.astro";
+import Chat from "./homepage/chat.astro";
+import Merch from "./homepage/merch.astro";
+import Photos from "./homepage/photos.astro";
+import Videos from "./homepage/videos.astro";
+---
+
+<BaseLayout>
+	<main id="main" class="layout">
+		<aside class="sidebar">
+			<Profile />
+			<Music />
+			<TopEight />
+			<Status />
+		</aside>
+		<div class="content">
+			<Featured />
+			<div class="grid-two">
+				<Board />
+				<Chat />
+			</div>
+			<Merch />
+			<Photos />
+			<Videos />
+		</div>
+	</main>
+</BaseLayout>

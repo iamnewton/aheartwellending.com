@@ -1,0 +1,22 @@
+---
+const topFriends = [
+	"You?",
+	"Your band",
+	"Old friends",
+	"New friends",
+	"The scene",
+	"Long Beach",
+	"Mix CDs",
+	"Everyone",
+];
+---
+
+<section class="box top-box" id="top8">
+	<h2>Heartwell's <em>Top 8</em></h2>
+	<div class="box-body">
+		<div class="top-eight">
+			{topFriends.map((friend, index) => <div class="friend"><div class="avatar">{String(index + 1).padStart(2, "0")}</div><span>{friend}</span></div>)}
+		</div>
+		<p class="hint">Top 8 slots shown as concept placeholders.</p>
+	</div>
+</section>

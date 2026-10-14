@@ -1,0 +1,22 @@
+---
+const photos = [
+	{ image: "/assets/band-promo.jpg", alt: "A Heartwell Ending band promo photo", title: "The band", detail: "Promo photo" },
+	{ image: "/assets/cd-front.jpg", alt: "Trust Us, We Lie CD case", title: "Trust Us, We Lie", detail: "CD packaging" },
+	{ image: "/assets/cd-disc.jpg", alt: "Trust Us, We Lie CD and jewel cases", title: "The CD", detail: "Album collection" },
+	{ image: "/assets/vinyl-front.jpg", alt: "Trust Us, We Lie purple vinyl and sleeve", title: "Purple vinyl", detail: "Album collection" },
+];
+---
+
+<section class="box photos-box" id="photos">
+	<h2>Photo <em>gallery</em></h2>
+	<div class="section-intro"><p>Band photos and a closer look at the album collection.</p></div>
+	<div class="gallery-grid">
+		{photos.map((photo) => (
+			<div class="media-tile">
+				<img src={photo.image} alt={photo.alt} />
+				<h3>{photo.title}</h3>
+				<p>{photo.detail}</p>
+			</div>
+		))}
+	</div>
+</section>

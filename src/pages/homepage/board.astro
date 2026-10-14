@@ -1,0 +1,20 @@
+---
+const pinnedBoardPosts = [
+  { icon: "♥", name: "Heartwell", note: "Pinned · Welcome back", message: "What song takes you straight back?" },
+  { icon: "★", name: "scene_kid_2006", note: "Demo message", message: "Still have these songs on an old burned CD." },
+];
+---
+
+<section class="box board-box" id="board">
+	<h2>Message <em>board</em></h2>
+	<div class="section-intro"><p>Leave a note like it's 2006.</p></div>
+	<ul class="board-list" id="board-list">
+		{pinnedBoardPosts.map((post) => <li><div class="board-icon">{post.icon}</div><div><b>{post.name}</b><small>{post.note}</small><p>{post.message}</p></div></li>)}
+	</ul>
+	<form class="board-form" id="board-form">
+		<div class="form-row"><input id="board-name" maxlength="24" placeholder="Your screen name" aria-label="Your screen name" required /></div>
+		<textarea id="board-message" maxlength="280" placeholder="Type your message..." aria-label="Message" required></textarea>
+		<button class="solid-button" type="submit">Post message</button>
+		<p class="hint">Demo only · posts stay in this browser.</p>
+	</form>
+</section>

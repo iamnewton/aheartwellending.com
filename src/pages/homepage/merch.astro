@@ -1,0 +1,23 @@
+---
+const products = [
+	{ image: "/assets/ribcage-tee.jpg", alt: "Black A Heartwell Ending ribcage shirt", title: "Ribcage tee", detail: "Black shirt" },
+	{ image: "/assets/trust-us-tee.jpg", alt: "Off-white Trust Us, We Lie calla lily shirt", title: "Trust Us, We Lie tee", detail: "Off-white shirt" },
+	{ image: "/assets/vinyl-angle.jpg", alt: "Trust Us, We Lie purple vinyl record", title: "Trust Us, We Lie vinyl", detail: "Purple record" },
+	{ image: "/assets/cd-open.jpg", alt: "Trust Us, We Lie CD jewel case", title: "Trust Us, We Lie CD", detail: "Physical CD" },
+];
+---
+
+<section class="box merch-box" id="merch">
+	<h2>Heartwell <em>merch</em></h2>
+	<div class="section-intro"><p>Shirts and physical releases from the Heartwell collection.</p></div>
+	<div class="merch-grid">
+		{products.map((product) => (
+			<div class="product">
+				<img src={product.image} alt={product.alt} />
+				<h3>{product.title}</h3>
+				<p>{product.detail}</p>
+				<button type="button" data-modal="merch" data-image={product.image} data-title={product.title}>View item</button>
+			</div>
+		))}
+	</div>
+</section>

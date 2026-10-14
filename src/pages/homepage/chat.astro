@@ -1,0 +1,22 @@
+---
+const chatMessages = [
+	{ name: "heartwell", message: "Who remembers your first show?" },
+	{ name: "scene_kid_2006", message: "I still have the ticket stub." },
+];
+---
+
+<section class="box chat-box" id="chat">
+	<h2>Heartwell <em>chat room</em></h2>
+	<div class="chat-window">
+		<div class="chat-title"><span>♥ AHE_group_chat.exe</span><span class="window-controls">_ □ ×</span></div>
+		<div class="chat-messages" id="chat-messages" aria-live="polite">
+			<p class="system">*** Welcome to the Heartwell chat room ***</p>
+			{chatMessages.map((entry) => <p><b>{entry.name}:</b> {entry.message}</p>)}
+		</div>
+		<form class="chat-form" id="chat-form">
+			<input id="chat-input" maxlength="200" placeholder="Say something..." aria-label="Chat message" required />
+			<button type="submit">Send</button>
+		</form>
+	</div>
+	<p class="hint chat-hint">Demo room · messages stay on this device. Screen name: guest_2006.</p>
+</section>

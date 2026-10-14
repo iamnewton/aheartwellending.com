@@ -1,0 +1,7 @@
+Options +FollowSymLinks
+Options -MultiViews
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www\.aheartwellending\.com)(:80)? [NC]
+RewriteRule ^(.*) https://aheartwellending\.com/$1 [R=301,L]
+order deny,allow

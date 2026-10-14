@@ -1,0 +1,8 @@
+# Mac OSX Files
+.DS_Store
+"Icon\r"
+
+# Global/Project Files
+dist
+node_modules
+.astro/

@@ -1,0 +1,37 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import Modal from "../components/Modal.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "A Heartwell Ending | Official site",
+	description = "A Heartwell Ending — music, merch, photos, videos, and the community. A MySpace-inspired concept site.",
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#412138" />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23251336'/%3E%3Cpath d='M14 45V19h8v10h20V19h8v26h-8V36H22v9z' fill='%23fff'/%3E%3C/svg%3E" />
+	</head>
+	<body>
+		<a href="#main" class="skip">Skip to content</a>
+		<div class="site">
+			<SiteHeader />
+			<slot />
+			<SiteFooter />
+		</div>
+		<Modal />
+		<script src="../scripts/site.js"></script>
+	</body>
+</html>

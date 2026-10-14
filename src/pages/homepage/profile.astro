@@ -1,0 +1,34 @@
+---
+const profile = {
+	name: "A Heartwell Ending",
+	location: "Long Beach, California",
+	genre: "Emo / post-hardcore",
+	image: "/assets/band-promo.jpg",
+	stats: [
+		{ label: "Member since", value: "2003" },
+		{ label: "Mood", value: "nostalgic" },
+		{ label: "Currently", value: "making noise" },
+	],
+	links: [
+		{ label: "♫ Hear songs", href: "#music" },
+		{ label: "☏ Say hello", href: "#chat" },
+		{ label: "▣ View photos", href: "#photos" },
+		{ label: "★ See merch", href: "#merch" },
+	],
+};
+---
+
+<section class="box profile-box" id="home">
+	<h2>About <em>Heartwell</em></h2>
+	<div class="box-body">
+		<img class="profile-img" src={profile.image} alt="A Heartwell Ending band promo photo" />
+		<div class="profile-name">{profile.name}</div>
+		<div class="small">{profile.location} · {profile.genre}</div>
+		<div class="profile-stats">
+			{profile.stats.map((stat) => <div><span>{stat.label}</span> <b>{stat.value}</b></div>)}
+		</div>
+		<div class="profile-links">
+			{profile.links.map((link) => <a href={link.href}>{link.label}</a>)}
+		</div>
+	</div>
+</section>

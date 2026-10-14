@@ -1,0 +1,25 @@
+{
+	"name": "aheartwellending.com",
+	"description": "Kate Newton - Children's book author",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iamnewton/aheartwellending.com.git"
+	},
+	"license": "UNLICENSED",
+	"type": "module",
+	"main": "src/pages/index.astro",
+	"files": [
+		"src/",
+		"CNAME",
+		"astro.config.mjs"
+	],
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview"
+	},
+	"dependencies": {
+		"astro": "^7.3.8"
+	},
+	"packageManager": "pnpm@10.26.1"
+}

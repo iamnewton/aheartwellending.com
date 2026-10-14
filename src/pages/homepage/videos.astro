@@ -1,0 +1,21 @@
+---
+const videos = [
+	{ image: "/assets/album-art.png", alt: "Trust Us, We Lie artwork for a future music video", title: "Music videos" },
+	{ image: "/assets/band-promo.jpg", alt: "A Heartwell Ending band photo for a future live video", title: "Live archive" },
+];
+---
+
+<section class="box videos-box" id="videos">
+	<h2>Video <em>gallery</em></h2>
+	<div class="section-intro"><p>Music videos, live clips, and old footage will live here.</p></div>
+	<div class="video-grid">
+		{videos.map((video) => (
+			<div class="media-tile">
+				<div class="video-thumb"><img src={video.image} alt={video.alt} /><span class="play-badge" aria-hidden="true">▶</span></div>
+				<h3>{video.title}</h3>
+				<p>Video slot</p>
+				<button type="button" data-modal="video" data-title={video.title}>Open video slot</button>
+			</div>
+		))}
+	</div>
+</section>
