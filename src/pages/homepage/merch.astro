@@ -1,9 +1,10 @@
 ---
+const assetBase = import.meta.env.BASE_URL;
 const products = [
-	{ image: "/assets/ribcage-tee.jpg", alt: "Black A Heartwell Ending ribcage shirt", title: "Ribcage tee", detail: "Black shirt" },
-	{ image: "/assets/trust-us-tee.jpg", alt: "Off-white Trust Us, We Lie calla lily shirt", title: "Trust Us, We Lie tee", detail: "Off-white shirt" },
-	{ image: "/assets/vinyl-angle.jpg", alt: "Trust Us, We Lie purple vinyl record", title: "Trust Us, We Lie vinyl", detail: "Purple record" },
-	{ image: "/assets/cd-open.jpg", alt: "Trust Us, We Lie CD jewel case", title: "Trust Us, We Lie CD", detail: "Physical CD" },
+	{ image: `${assetBase}/assets/ribcage-tee.jpg`, alt: "Black A Heartwell Ending ribcage shirt", title: "Ribcage tee", detail: "Black shirt" },
+	{ image: `${assetBase}/assets/trust-us-tee.jpg`, alt: "Off-white Trust Us, We Lie calla lily shirt", title: "Trust Us, We Lie tee", detail: "Off-white shirt" },
+	{ image: `${assetBase}/assets/vinyl-angle.jpg`, alt: "Trust Us, We Lie purple vinyl record", title: "Trust Us, We Lie vinyl", detail: "Purple record" },
+	{ image: `${assetBase}/assets/cd-open.jpg`, alt: "Trust Us, We Lie CD jewel case", title: "Trust Us, We Lie CD", detail: "Physical CD" },
 ];
 ---
 

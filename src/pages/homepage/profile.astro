@@ -1,9 +1,10 @@
 ---
+const assetBase = import.meta.env.BASE_URL;
 const profile = {
 	name: "A Heartwell Ending",
 	location: "Long Beach, California",
 	genre: "Emo / post-hardcore",
-	image: "/assets/band-promo.jpg",
+	image: `${assetBase}/assets/band-promo.jpg`,
 	stats: [
 		{ label: "Member since", value: "2003" },
 		{ label: "Mood", value: "nostalgic" },

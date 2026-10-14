@@ -1,19 +1,20 @@
 ---
 import { navigationLinks } from "./navigation.js";
+const assetBase = import.meta.env.BASE_URL;
 ---
 <div class="utility">
 	<span><strong>A Heartwell Ending</strong> / official profile</span>
 </div>
 <header class="banner">
 	<div class="banner-brand">
-		<img class="banner-logo" src="assets/heartwell-logo.png" alt="A Heartwell Ending">
+		<img class="banner-logo" src={`${assetBase}/assets/heartwell-logo.png`} alt="A Heartwell Ending">
 		<span class="banner-sub">LONG BEACH, CALIFORNIA / EST. 2003</span>
 	</div>
-	<img class="banner-album" src="assets/album-art.png" alt="Trust Us, We Lie album artwork with purple calla lily">
+	<img class="banner-album" src={`${assetBase}/assets/album-art.png`} alt="Trust Us, We Lie album artwork with purple calla lily">
 	<span class="banner-stamp">last login: forever ago</span>
 </header>
 <nav class="main-nav" aria-label="Main navigation">
-  {navigationLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+	{navigationLinks.map((link) => <a href={link.href}>{link.label}</a>)}
 </nav>
 <div class="welcome">
 	<span>You are viewing A Heartwell Ending's profile.</span>
