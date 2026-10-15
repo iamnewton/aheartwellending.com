@@ -16,8 +16,15 @@ const topFriends = [
 	<h2>Heartwell's <em>Top 8</em></h2>
 	<div class="box-body">
 		<div class="top-eight">
-			{topFriends.map((friend, index) => <div class="friend"><div class="avatar">{friend.image ? <img src={friend.image} alt={friend.name} loading="lazy" /> : String(index + 1).padStart(2, "0")}</div><span>{friend.name}</span></div>)}
+			{topFriends.map((friend, index) => (
+				<div class="friend">
+					{friend.image
+						? <img class="friend-image" src={friend.image} alt={friend.name} loading="lazy" />
+						: <div class="avatar">{String(index + 1).padStart(2, "0")}</div>
+					}
+					<span>{friend.name}</span>
+				</div>
+			))}
 		</div>
-		<p class="hint">Top 8 slots shown as concept placeholders.</p>
 	</div>
 </section>
