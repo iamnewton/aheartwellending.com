@@ -301,6 +301,12 @@
         background:linear-gradient(135deg, #a17aba, #3b1b51)
     }
 
+    .friend .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
     .friend span {
         font-size: 12px;
         line-height: 1.1;

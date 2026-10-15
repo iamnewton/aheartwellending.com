@@ -1,13 +1,14 @@
 ---
+const assetBase = import.meta.env.BASE_URL;
 const topFriends = [
-	"You?",
-	"Your band",
-	"Old friends",
-	"New friends",
-	"The scene",
-	"Long Beach",
-	"Mix CDs",
-	"Everyone",
+	{ name: "Tom", image: `${assetBase}/assets/images/tom.png` },
+	{ name: "You?" },
+	{ name: "Your band" },
+	{ name: "Old friends" },
+	{ name: "New friends" },
+	{ name: "The scene" },
+	{ name: "Long Beach" },
+	{ name: "Everyone" },
 ];
 ---
 
@@ -15,7 +16,7 @@ const topFriends = [
 	<h2>Heartwell's <em>Top 8</em></h2>
 	<div class="box-body">
 		<div class="top-eight">
-			{topFriends.map((friend, index) => <div class="friend"><div class="avatar">{String(index + 1).padStart(2, "0")}</div><span>{friend}</span></div>)}
+			{topFriends.map((friend, index) => <div class="friend"><div class="avatar">{friend.image ? <img src={friend.image} alt={friend.name} loading="lazy" /> : String(index + 1).padStart(2, "0")}</div><span>{friend.name}</span></div>)}
 		</div>
 		<p class="hint">Top 8 slots shown as concept placeholders.</p>
 	</div>
