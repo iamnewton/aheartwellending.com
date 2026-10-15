@@ -1,10 +1,16 @@
 ---
 const assetBase = import.meta.env.BASE_URL;
 const tracks = [
-	"If Looks Could Kill",
-	"The Secret Between The Sheets",
-	"One More Song For Your MySpace Page",
-	"Trust Us, We Lie",
+	{ title: "From Heart and Soul to Pen and Paper", file: "01-from-heart-and-soul-to-pen-and-paper.aac" },
+	{ title: "Give Up to Give In", file: "02-give-up-to-give-in.aac" },
+	{ title: "Trust Us, We Lie", file: "03-trust-us,-we-lie.aac" },
+	{ title: "Your My Dream Catcher", file: "04-your-my-dream-catcher.aac" },
+	{ title: "The Secret (Between the Sheets)", file: "05-the-secret-(between-the-sheets).aac" },
+	{ title: "Memory", file: "06-memory.aac" },
+	{ title: "One More Song for Your MySpace Page", file: "07-one-more-song-for-your-myspace-page.aac" },
+	{ title: "If Looks Could Kill", file: "08-if-looks-could-kill.aac" },
+	{ title: "There Are Two Rs in Sorry, But One R in Whore", file: "09-there-are-two-rs-in-sorry,-but-one-r-in-whore.aac" },
+	{ title: "Feelings Between the Lines", file: "10-feelings-between-the-lines.aac" },
 ];
 ---
 <section class="box player-box" id="music">
@@ -13,17 +19,18 @@ const tracks = [
 		<div class="player">
 			<div class="player-head">
 				<img class="player-art" src={`${assetBase}/assets/album-art.png`} alt="Trust Us, We Lie album artwork" />
-				<div><div class="player-title" id="now-playing">{tracks[0]}</div><div class="player-sub">A Heartwell Ending · playlist</div></div>
+				<div><div class="player-title" id="now-playing">{tracks[0].title}</div><div class="player-sub">A Heartwell Ending · playlist</div></div>
 			</div>
 			<div class="player-buttons">
 				<button id="prev-track" aria-label="Previous track">⏮</button>
 				<button id="play-track" aria-label="Play selected song">▶</button>
 				<button id="next-track" aria-label="Next track">⏭</button>
-				<div class="progress" aria-hidden="true"><span></span></div>
+				<div class="progress" id="track-progress" role="slider" tabindex="0" aria-label="Track progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
 			</div>
-			<div class="player-note" id="player-note">Select a song below.</div>
+			<div class="player-note" id="player-note" aria-live="polite">Choose a song to play.</div>
+			<audio id="audio-player" preload="none" controlsList="nodownload noplaybackrate" disablePictureInPicture hidden></audio>
 			<ol class="tracklist" id="tracklist">
-				{tracks.map((track, index) => <li><button class:list={{ active: index === 0 }} data-track={index} data-track-title={track}><span>{String(index + 1).padStart(2, "0")}</span> {track}</button></li>)}
+				{tracks.map((track, index) => <li><button class:list={{ active: index === 0 }} data-track={index} data-track-title={track.title} data-track-src={`${assetBase}/assets/audio/${track.file}`}><span>{String(index + 1).padStart(2, "0")}</span> {track.title}</button></li>)}
 			</ol>
 		</div>
 	</div>

@@ -1,21 +1,94 @@
-const tracks = Array.from(document.querySelectorAll('#tracklist button[data-track]'), button => button.dataset.trackTitle);
-    let trackIndex = 0;
-    function selectTrack(index) {
-        trackIndex = (index + tracks.length) % tracks.length;
-        document.getElementById('now-playing').textContent = tracks[trackIndex];
-        document.querySelectorAll('#tracklist button').forEach((b, i) => b.classList.toggle('active', i === trackIndex));
-        document.getElementById('player-note').textContent = 'Selected: ' + tracks[trackIndex];
+const audioPlayer = document.getElementById('audio-player');
+const trackButtons = Array.from(document.querySelectorAll('#tracklist button[data-track]'));
+const playButton = document.getElementById('play-track');
+const progress = document.getElementById('track-progress');
+const progressFill = progress?.querySelector('span');
+const playerNote = document.getElementById('player-note');
+let trackIndex = 0;
+
+function formatTime(seconds) {
+    if (!Number.isFinite(seconds)) return '0:00';
+    const minutes = Math.floor(seconds / 60);
+    return `${minutes}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
+}
+
+function setTrack(index, autoplay = false) {
+    if (!audioPlayer || trackButtons.length === 0) return;
+    trackIndex = (index + trackButtons.length) % trackButtons.length;
+    const selected = trackButtons[trackIndex];
+    document.getElementById('now-playing').textContent = selected.dataset.trackTitle;
+    trackButtons.forEach((button, buttonIndex) => button.classList.toggle('active', buttonIndex === trackIndex));
+    audioPlayer.pause();
+    audioPlayer.removeAttribute('src');
+    audioPlayer.load();
+    progressFill.style.width = '0%';
+    progress.setAttribute('aria-valuenow', '0');
+    playButton.textContent = '▶';
+    playButton.setAttribute('aria-label', 'Play selected song');
+    playerNote.textContent = `Ready: ${selected.dataset.trackTitle}`;
+    if (autoplay) startPlayback();
+}
+
+async function startPlayback() {
+    if (!audioPlayer || trackButtons.length === 0) return;
+    try {
+        const selected = trackButtons[trackIndex];
+        if (audioPlayer.getAttribute('src') !== selected.dataset.trackSrc) {
+            audioPlayer.src = selected.dataset.trackSrc;
+            audioPlayer.load();
+        }
+        await audioPlayer.play();
+    } catch {
+        playerNote.textContent = 'Could not load this track. Add its audio file to public/assets/audio/.';
     }
-    document.getElementById('tracklist').addEventListener('click', e => {
-        const b = e.target.closest('button[data-track]');
-        if (b)
-            selectTrack(Number(b.dataset.track))
+}
+
+if (audioPlayer && trackButtons.length > 0) {
+    setTrack(0);
+    document.getElementById('tracklist').addEventListener('click', event => {
+        const button = event.target.closest('button[data-track]');
+        if (button) setTrack(Number(button.dataset.track), true);
     });
-    document.getElementById('prev-track').onclick = () => selectTrack(trackIndex - 1);
-    document.getElementById('next-track').onclick = () => selectTrack(trackIndex + 1);
-    document.getElementById('play-track').onclick = () => {
-        document.getElementById('player-note').textContent = 'Audio will play here once songs are added.'
-    };
+    document.getElementById('prev-track').addEventListener('click', () => setTrack(trackIndex - 1, true));
+    document.getElementById('next-track').addEventListener('click', () => setTrack(trackIndex + 1, true));
+    playButton.addEventListener('click', () => {
+        if (audioPlayer.paused) startPlayback();
+        else audioPlayer.pause();
+    });
+    audioPlayer.addEventListener('play', () => {
+        playButton.textContent = '⏸';
+        playButton.setAttribute('aria-label', 'Pause selected song');
+        playerNote.textContent = 'Now playing';
+    });
+    audioPlayer.addEventListener('pause', () => {
+        playButton.textContent = '▶';
+        playButton.setAttribute('aria-label', 'Play selected song');
+    });
+    audioPlayer.addEventListener('timeupdate', () => {
+        const percent = audioPlayer.duration ? (audioPlayer.currentTime / audioPlayer.duration) * 100 : 0;
+        progressFill.style.width = `${percent}%`;
+        progress.setAttribute('aria-valuenow', String(Math.round(percent)));
+        playerNote.textContent = `${formatTime(audioPlayer.currentTime)} / ${formatTime(audioPlayer.duration)}`;
+    });
+    audioPlayer.addEventListener('ended', () => setTrack(trackIndex + 1, true));
+    audioPlayer.addEventListener('error', () => {
+        playerNote.textContent = 'Could not load this track. Add its audio file to public/assets/audio/.';
+    });
+    function seek(event) {
+        if (!Number.isFinite(audioPlayer.duration) || audioPlayer.duration === 0) return;
+        const bounds = progress.getBoundingClientRect();
+        const percent = Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width));
+        audioPlayer.currentTime = percent * audioPlayer.duration;
+    }
+    progress.addEventListener('click', seek);
+    progress.addEventListener('keydown', event => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        const step = audioPlayer.duration ? audioPlayer.duration / 100 : 0;
+        audioPlayer.currentTime = Math.max(0, Math.min(audioPlayer.duration || 0, audioPlayer.currentTime + (event.key === 'ArrowRight' ? step : -step)));
+    });
+}
+
     const boardList = document.getElementById('board-list');
     const savedPosts = JSON.parse(localStorage.getItem('ahe-board-posts') || '[]');
     function addPost(name, message, save) {

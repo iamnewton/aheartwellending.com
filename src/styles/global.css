@@ -368,14 +368,35 @@
         height: 8px;
         background: #100a16;
         border: 1px solid #6f4e84;
-        flex:1
+        flex: 1;
+        min-width: 24px;
+        padding: 0;
+        cursor: pointer;
+        position: relative;
     }
 
     .progress span {
         display: block;
-        width: 31%;
+        width: 0;
         height: 100%;
-        background:#c78be5
+        background: #c78be5;
+        pointer-events: none;
+    }
+
+    .player-buttons .progress {
+        width: auto;
+        height: 8px;
+        background: #100a16;
+        border: 1px solid #6f4e84;
+    }
+
+    .player-buttons .progress:hover {
+        background: #100a16;
+    }
+
+    .progress:focus-visible {
+        outline: 2px solid #f6eefb;
+        outline-offset: 3px;
     }
 
     .tracklist {
