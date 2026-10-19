@@ -734,7 +734,32 @@
     }
 
     .video-thumb {
-        position:relative
+        position:relative;
+		display: block;
+    }
+
+    .media-tile .video-trigger {
+        display:block;
+        width:100%;
+        border:0;
+        background:none;
+        color:inherit;
+        padding:0;
+        text-align:left;
+        cursor:pointer
+    }
+
+    .video-trigger:focus-visible {
+        outline:3px solid #65365b;
+        outline-offset:4px
+    }
+
+    .video-trigger-title {
+        display:block;
+        font-size:14px;
+        font-weight:bold;
+        line-height:1.25;
+        margin:7px 0 2px
     }
 
     .video-thumb img {
@@ -832,6 +857,21 @@
         object-fit: contain;
         display: block;
         margin:0 auto 14px
+    }
+
+    .modal-content iframe {
+        display:block;
+        width:100%;
+        aspect-ratio:16/9;
+        border:0
+    }
+
+    .modal:has(iframe) .modal-panel {
+        max-width:800px
+    }
+
+    .modal:has(iframe) .modal-content {
+        padding:0
     }
 
     .skip {

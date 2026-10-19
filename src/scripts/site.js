@@ -159,15 +159,24 @@ if (audioPlayer && trackButtons.length > 0) {
         returnFocus = button;
         document.getElementById('modal-title').textContent = button.dataset.title;
         content.replaceChildren();
-        if (button.dataset.image) {
+        if (button.dataset.modal === 'video' && button.dataset.videoId) {
+            const frame = document.createElement('iframe');
+            frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(button.dataset.videoId)}?autoplay=1`;
+            frame.title = button.dataset.title;
+            frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            frame.allowFullscreen = true;
+            content.append(frame);
+        } else if (button.dataset.image) {
             const img = document.createElement('img');
             img.src = button.dataset.image;
             img.alt = button.dataset.title + ' artwork';
             content.append(img)
         }
-        const p = document.createElement('p');
-        p.textContent = button.dataset.modal === 'video' ? 'This is a video gallery slot in the concept. Add the band’s videos to play them here.' : 'This item uses the supplied product image. Add its price and store link when the shop is ready.';
-        content.append(p);
+        if (button.dataset.modal !== 'video') {
+            const p = document.createElement('p');
+            p.textContent = 'This item uses the supplied product image. Add its price and store link when the shop is ready.';
+            content.append(p);
+        }
         modal.classList.add('open');
         document.getElementById('modal-close').focus()
     }));
