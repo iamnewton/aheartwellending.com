@@ -1,29 +1,55 @@
 ---
+import { socialLinks, type SocialLink } from "../../data/social";
+
+type TopFriend =
+	| { name: string; image?: string; social?: never }
+	| { name?: never; image?: never; social: keyof typeof socialLinks };
+type TopEightEntry = { name: string; image?: string; social?: keyof typeof socialLinks } & Partial<SocialLink>;
+
 const assetBase = import.meta.env.BASE_URL;
-const topFriends = [
+const topFriends: TopFriend[] = [
 	{ name: "Tom", image: `${assetBase}/assets/images/tom.png` },
-	{ name: "You?" },
-	{ name: "Your band" },
-	{ name: "Old friends" },
-	{ name: "New friends" },
-	{ name: "The scene" },
-	{ name: "Long Beach" },
-	{ name: "Everyone" },
+	{ social: "tiktok" },
+	{ social: "instagram" },
+	{ social: "spotify" },
+	{ social: "appleMusic" },
+	{ name: "Justin" },
+	{ name: "Will" },
+	{ name: "Chris" },
 ];
+const topEight = topFriends.map((friend: TopFriend): TopEightEntry => {
+	if (!friend.social) return friend;
+	const social = socialLinks[friend.social];
+	return { ...friend, ...social, name: social.platform };
+});
 ---
 
 <section class="box top-box" id="top8">
 	<h2>Heartwell's <em>Top 8</em></h2>
 	<div class="box-body">
 		<div class="top-eight">
-			{topFriends.map((friend, index) => (
-				<div class="friend">
-					{friend.image
-						? <img class="friend-image" src={friend.image} alt={friend.name} loading="lazy" />
-						: <div class="avatar">{String(index + 1).padStart(2, "0")}</div>
-					}
-					<span>{friend.name}</span>
-				</div>
+			{topEight.map((friend, index) => (
+				<>
+					{friend.href ? (
+						<a class="friend friend-link" href={friend.href} target="_blank" rel="noopener noreferrer" aria-label={`${friend.platform}: ${friend.name}`}>
+							<div class={`friend-icon ${friend.icon}`} aria-hidden="true">
+								{friend.platform === "TikTok" && <svg viewBox="0 0 24 24"><path d="M19.6 7.1a6.8 6.8 0 0 1-4.2-1.5v8.1a6.2 6.2 0 1 1-5.4-6.1v3.4a2.8 2.8 0 1 0 2 2.7V2h3.4a6.7 6.7 0 0 0 4.2 5.1v0Z" /></svg>}
+								{friend.platform === "Instagram" && <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle class="icon-dot" cx="17.5" cy="6.8" r="1" /></svg>}
+								{friend.platform === "Spotify" && <svg viewBox="0 0 24 24"><circle class="icon-fill" cx="12" cy="12" r="10" /><path class="spotify-mark" d="M6.2 9.1c3.9-1.2 8.6-.8 11.8 1.1M7 12.2c3.2-1 7.2-.6 9.8.9m-8.9 2c2.5-.7 5.5-.4 7.6.7" /></svg>}
+								{friend.platform === "Apple Music" && <svg viewBox="0 0 24 24"><path class="apple-fill" d="M20 3.2v13.1a3.2 3.2 0 1 1-1.8-2.9V7.1l-8.4 1.8v9.1A3.2 3.2 0 1 1 8 15.1V6.2c0-.8.5-1.5 1.3-1.7l8.6-1.9A1.7 1.7 0 0 1 20 4.3v-1.1Z" /></svg>}
+							</div>
+							<span>{friend.platform}</span>
+						</a>
+					) : (
+						<div class="friend">
+							{friend.image
+								? <img class="friend-image" src={friend.image} alt={friend.name} loading="lazy" />
+								: <div class="avatar">{String(index + 1).padStart(2, "0")}</div>
+							}
+							<span>{friend.name}</span>
+						</div>
+					)}
+				</>
 			))}
 		</div>
 	</div>

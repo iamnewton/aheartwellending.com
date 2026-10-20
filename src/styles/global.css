@@ -318,6 +318,44 @@
         font-weight:bold
     }
 
+    .friend-link {
+        display: block;
+        text-decoration: none;
+    }
+
+    .friend-icon {
+        height: 57px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 4px;
+        color: white;
+    }
+
+    .friend-icon svg {
+        width: 31px;
+        height: 31px;
+    }
+
+    .friend-icon.tiktok { background: #111; }
+    .friend-icon.tiktok svg { fill: currentColor; }
+    .friend-icon.instagram { background: linear-gradient(135deg, #7438a8, #e43f70 55%, #f4a33b); }
+    .friend-icon.instagram svg { fill: none; stroke: currentColor; stroke-width: 2; }
+    .friend-icon.instagram .icon-dot { fill: currentColor; stroke: none; }
+    .friend-icon.spotify { background: #1db954; }
+    .friend-icon.spotify .icon-fill { fill: currentColor; }
+    .friend-icon.spotify .spotify-mark { fill: none; stroke: #1db954; stroke-width: 1.5; stroke-linecap: round; }
+    .friend-icon.apple-music { background: linear-gradient(135deg, #fa365e, #a62cc5); }
+    .friend-icon.apple-music .apple-fill { fill: currentColor; }
+
+    .friend-link:hover .friend-icon { filter: brightness(.88); }
+    .friend-link:focus-visible { outline: 2px solid #552a72; outline-offset: 2px; }
+
+    .friend .friend-name {
+        margin-top: 2px;
+        font-weight: normal;
+        color: #6f5680;
+    }
+
     .sparkle {
         color:#913cbb
     }
