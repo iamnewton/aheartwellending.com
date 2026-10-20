@@ -666,6 +666,188 @@
         margin:0 13px 13px
     }
 
+	.chat-box .section-intro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 9px 15px;
+	}
+
+    .server-card {
+        font-family: 'Courier New', monospace;
+    }
+
+    .server-card-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 9px;
+        color: #fff;
+        background: linear-gradient(90deg, #a45887, #63358b 70%, #42265c);
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: .06em;
+    }
+
+    .server-status-led {
+        width: 9px;
+        height: 9px;
+        border: 1px solid #e6ffe8;
+        border-radius: 50%;
+        background: #7df29a;
+        box-shadow: 0 0 6px #7df29a;
+    }
+
+    .server-card-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding-bottom: 9px;
+        border-bottom: 1px dashed #cbb6d7;
+    }
+
+    .server-card-kicker {
+        margin: 0 0 4px;
+        color: #80638d;
+        font-size: 9px;
+        font-weight: bold;
+        letter-spacing: .08em;
+    }
+
+    .presence-counter {
+        flex: none;
+        margin: 0;
+        color: #3e7546;
+        text-align: center;
+    }
+
+    .presence-counter strong,
+    .presence-counter span {
+        display: block;
+    }
+
+    .presence-counter strong {
+        font: bold 20px/1.05 'Courier New', monospace;
+    }
+
+    .presence-counter span {
+        font-size: 9px;
+        text-transform: uppercase;
+    }
+
+    .server-card-note,
+    .server-updated {
+        margin: 8px 0;
+        color: #716079;
+        font-size: 10px;
+    }
+
+    .online-friends {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .online-friend {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        min-width: 0;
+        padding: 5px;
+        border: 1px solid #eaddec;
+        background: #faf5fc;
+    }
+
+    .online-friend img,
+    .online-friend-avatar {
+        display: grid;
+        flex: none;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        border: 1px solid #b49bc1;
+        background: #e8dcef;
+        color: #57366d;
+        object-fit: cover;
+        font: bold 13px Georgia, serif;
+    }
+
+    .online-friend-copy {
+        min-width: 0;
+        line-height: 1.2;
+    }
+
+    .online-friend-name {
+        display: block;
+        overflow: hidden;
+        color: #402452;
+        font-size: 10px;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .online-friend-status {
+        display: block;
+        margin-top: 3px;
+        color: #66715d;
+        font-size: 9px;
+        text-transform: lowercase;
+    }
+
+    .online-friend-status::before {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+        border-radius: 50%;
+        background: #55bf68;
+        content: '';
+    }
+
+    .online-friend-status[data-status="idle"]::before {
+        background: #e8b342;
+    }
+
+    .online-friend-status[data-status="dnd"]::before {
+        background: #e05b66;
+    }
+
+    .server-join-button {
+        display: block;
+        margin-top: 9px;
+        text-align: center;
+    }
+
+    .server-join-button:hover,
+    .server-join-button:focus-visible {
+        background: linear-gradient(#9964b5, #70438b);
+    }
+
+    .server-updated {
+        margin-bottom: 0;
+        text-align: right;
+    }
+
+    .discord-widget-wrap {
+        padding: 0 13px 14px;
+    }
+
+    .discord-widget-wrap h3 {
+        margin: 0 0 8px;
+        font-size: 14px;
+    }
+
+    .discord-widget-wrap iframe {
+        display: block;
+        width: min(350px, 100%);
+        max-width: 100%;
+        height: 500px;
+        border: 0;
+        background: #2c2f33;
+    }
+
     .merch-grid, .gallery-grid, .video-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);

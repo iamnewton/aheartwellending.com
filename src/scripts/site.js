@@ -126,28 +126,91 @@ if (audioPlayer && trackButtons.length > 0) {
             block: 'nearest'
         })
     });
-    const chatMessages = document.getElementById('chat-messages');
-    const savedChat = JSON.parse(localStorage.getItem('ahe-chat-messages') || '[]');
-    function addChat(message, save) {
-        const p = document.createElement('p'),
-            b = document.createElement('b');
-        b.textContent = 'guest_2006: ';
-        p.append(b, document.createTextNode(message));
-        chatMessages.append(p);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        if (save) {
-            savedChat.push(message);
-            localStorage.setItem('ahe-chat-messages', JSON.stringify(savedChat.slice(-40)))
-        }
+    const chatForm = document.getElementById('chat-form');
+    if (chatForm) {
+        const chatInput = document.getElementById('chat-input');
+        const chatStatus = document.getElementById('chat-status');
+        const draftKey = 'ahe-discord-message-draft';
+        chatInput.value = localStorage.getItem(draftKey) || '';
+        chatInput.addEventListener('input', () => localStorage.setItem(draftKey, chatInput.value));
+        chatForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            const message = chatInput.value.trim();
+            if (!message) return;
+            localStorage.setItem(draftKey, message);
+            const invite = chatForm.dataset.discordInvite;
+            if (!invite) {
+                chatStatus.textContent = 'Add the Discord invite link to finish connecting this room.';
+                return;
+            }
+            // Open during the submit gesture so browsers do not block the new tab.
+            window.open(invite, '_blank', 'noopener,noreferrer');
+            try {
+                await navigator.clipboard.writeText(message);
+                chatStatus.textContent = 'Message copied! Paste it into the Discord chat after you join.';
+            } catch {
+                chatStatus.textContent = 'Your draft is saved here. Copy it before pasting into Discord.';
+            }
+        });
     }
-    savedChat.forEach(x => addChat(x, false));
-    document.getElementById('chat-form').addEventListener('submit', e => {
-        e.preventDefault();
-        const input = document.getElementById('chat-input');
-        addChat(input.value.trim(), true);
-        input.value = '';
-        input.focus()
-    });
+    const discordServerCard = document.getElementById('discord-server-card');
+    if (discordServerCard) {
+        const serverName = document.getElementById('discord-server-name');
+        const presenceCount = document.getElementById('discord-presence-count');
+        const serverNote = document.getElementById('discord-server-note');
+        const onlineFriends = document.getElementById('discord-online-friends');
+        const serverUpdated = document.getElementById('discord-server-updated');
+        const widgetDataUrl = 'https://discord.com/api/guilds/1536825871875178568/widget.json';
+        const statusLabels = { online: 'online', idle: 'away', dnd: 'do not disturb', offline: 'offline' };
+        fetch(widgetDataUrl)
+            .then(response => {
+                if (!response.ok) throw new Error('Discord widget data is unavailable.');
+                return response.json();
+            })
+            .then(data => {
+                serverName.textContent = data.name || 'Heartwell Discord';
+                presenceCount.textContent = Number.isFinite(data.presence_count) ? data.presence_count.toLocaleString() : '—';
+                const members = Array.isArray(data.members) ? data.members : [];
+                const priority = { online: 0, idle: 1, dnd: 2, offline: 3 };
+                members
+                    .filter(member => member && member.username && member.status !== 'offline')
+                    .sort((a, b) => (priority[a.status] ?? 4) - (priority[b.status] ?? 4))
+                    .slice(0, 10)
+                    .forEach(member => {
+                        const card = document.createElement('div');
+                        const avatar = document.createElement(member.avatar_url ? 'img' : 'span');
+                        const copy = document.createElement('span');
+                        const name = document.createElement('span');
+                        const status = document.createElement('span');
+                        card.className = 'online-friend';
+                        if (member.avatar_url) {
+                            avatar.src = member.avatar_url;
+                            avatar.alt = '';
+                            avatar.loading = 'lazy';
+                        } else {
+                            avatar.className = 'online-friend-avatar';
+                            avatar.textContent = member.username.slice(0, 1).toUpperCase();
+                        }
+                        copy.className = 'online-friend-copy';
+                        name.className = 'online-friend-name';
+                        name.textContent = member.username;
+                        status.className = 'online-friend-status';
+                        status.dataset.status = member.status || 'online';
+                        status.textContent = statusLabels[member.status] || 'around';
+                        copy.append(name, status);
+                        card.append(avatar, copy);
+                        onlineFriends.append(card);
+                    });
+                serverNote.textContent = members.length
+                    ? 'A few familiar faces currently hanging out in the server:'
+                    : 'Be the first to say hi in the Heartwell server!';
+                serverUpdated.textContent = 'Live from Discord · refresh the page for an update';
+            })
+            .catch(() => {
+                serverNote.textContent = 'Live server details could not load right now.';
+                serverUpdated.textContent = 'You can still visit the server using the button below.';
+            });
+    }
     const modal = document.getElementById('modal'),
         content = document.getElementById('modal-content');
     let returnFocus;

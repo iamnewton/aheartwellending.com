@@ -1,22 +1,22 @@
 ---
-const chatMessages = [
-	{ name: "heartwell", message: "Who remembers your first show?" },
-	{ name: "scene_kid_2006", message: "I still have the ticket stub." },
-];
 ---
 
 <section class="box chat-box" id="chat">
-	<h2>Heartwell <em>chat room</em></h2>
-	<div class="chat-window">
-		<div class="chat-title"><span>♥ AHE_group_chat.exe</span><span class="window-controls">_ □ ×</span></div>
-		<div class="chat-messages" id="chat-messages" aria-live="polite">
-			<p class="system">*** Welcome to the Heartwell chat room ***</p>
-			{chatMessages.map((entry) => <p><b>{entry.name}:</b> {entry.message}</p>)}
+	<h2 class="server-card-title">
+		<span>Your Friends <em>Are Here</em></span>
+		<span class="server-status-led" aria-hidden="true"></span>
+	</h2>
+	<div class="section-intro">
+		<div>
+			<p class="server-card-kicker">CURRENTLY HANGING OUT AT</p>
+			<div id="discord-server-name">A Heartwell Ending's server</div>
 		</div>
-		<form class="chat-form" id="chat-form">
-			<input id="chat-input" maxlength="200" placeholder="Say something..." aria-label="Chat message" required />
-			<button type="submit">Send</button>
-		</form>
+		<p class="presence-counter"><strong id="discord-presence-count">—</strong><span>online</span></p>
 	</div>
-	<p class="hint chat-hint">Demo room · messages stay on this device. Screen name: guest_2006.</p>
+	<div class="box-body" id="discord-server-card" aria-live="polite">
+		<p class="server-card-note" id="discord-server-note">Loading who's around…</p>
+		<div class="online-friends" id="discord-online-friends" aria-label="Members currently online"></div>
+		<a class="solid-button server-join-button" href="https://discord.gg/AV7HSVb8b" target="_blank" rel="noopener noreferrer">Join the server »</a>
+		<p class="server-updated" id="discord-server-updated">Connecting to the Discord widget API…</p>
+	</div>
 </section>
