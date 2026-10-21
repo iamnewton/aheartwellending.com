@@ -893,6 +893,72 @@
         padding:14px
     }
 
+    .merch-carousel {
+        position: relative;
+    }
+
+    .merch-carousel.has-overflow {
+        padding: 0 42px;
+    }
+
+    .merch-carousel.has-overflow .merch-grid {
+        display: grid;
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% - 36px) / 4);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+    }
+
+    .merch-carousel.has-overflow .product {
+        scroll-snap-align: start;
+    }
+
+    .merch-carousel-arrow {
+        position: absolute;
+        top: 40%;
+        z-index: 1;
+        width: 32px;
+        height: 40px;
+        font-size: 24px;
+        line-height: 1;
+        color: #65365b;
+        background: #f4eaf2;
+        border: 1px solid #cabec1;
+        cursor: pointer;
+    }
+
+    .merch-carousel-arrow.previous { left: 8px; }
+    .merch-carousel-arrow.next { right: 8px; }
+    .merch-carousel-arrow:disabled { opacity: .4; cursor: default; }
+
+    .product-open {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .product-open-label {
+        display: block;
+        padding-top: 5px;
+        color: #65365b;
+        font-size: 12px;
+        text-decoration: underline;
+    }
+
+    .shopify-placeholder {
+        padding: 12px;
+        color: #695973;
+        background: #f6f0f4;
+        border: 1px dashed #cabec1;
+        font-size: 13px;
+    }
+
     .product, .media-tile {
         min-width:0
     }
@@ -1537,6 +1603,10 @@
         grid-template-columns:repeat(4, 1fr)
     }
 
+    .merch-carousel.has-overflow .merch-grid {
+        grid-auto-columns: calc((100% - 12px) / 2);
+    }
+
     .product img, .media-tile img {
         background: #f2eee9;
         border-color: #cabec1;
@@ -1595,6 +1665,9 @@
     @media (max-width: 1000px) {
         .merch-grid {
             grid-template-columns: repeat(2, 1fr)
+        }
+        .merch-carousel.has-overflow .merch-grid {
+            grid-auto-columns: calc((100% - 12px) / 2);
         }
     }
 

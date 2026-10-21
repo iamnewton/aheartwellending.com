@@ -9,16 +9,22 @@ const products = [
 ---
 
 <section class="box merch-box" id="merch">
-	<h2>Heartwell <em>merch</em></h2>
+	<h2>Merch <em>Shop</em></h2>
 	<div class="section-intro"><p>Shirts and physical releases from the Heartwell collection.</p></div>
-	<div class="merch-grid">
-		{products.map((product) => (
-			<div class="product">
-				<img src={product.image} alt={product.alt} />
-				<h3>{product.title}</h3>
-				<p>{product.detail}</p>
-				<button type="button" data-modal="merch" data-image={product.image} data-title={product.title}>View item</button>
-			</div>
-		))}
+	<div class:list={["merch-carousel", { "has-overflow": products.length > 4 }]} data-merch-carousel>
+		{products.length > 4 && <button class="merch-carousel-arrow previous" type="button" data-merch-previous aria-label="Previous merch items">‹</button>}
+		<div class="merch-grid" data-merch-track>
+			{products.map((product) => (
+				<article class="product">
+					<button class="product-open" type="button" data-modal="merch" data-image={product.image} data-detail={product.detail} data-title={product.title} aria-label={`View ${product.title}`}>
+						<img src={product.image} alt={product.alt} />
+						<h3>{product.title}</h3>
+						<p>{product.detail}</p>
+						{/* <span class="product-open-label">View item »</span> */}
+					</button>
+				</article>
+			))}
+		</div>
+		{products.length > 4 && <button class="merch-carousel-arrow next" type="button" data-merch-next aria-label="Next merch items">›</button>}
 	</div>
 </section>
