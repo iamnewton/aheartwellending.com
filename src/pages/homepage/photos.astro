@@ -1,23 +1,33 @@
 ---
 const assetBase = import.meta.env.BASE_URL;
-const photos = [
-	{ image: `${assetBase}/assets/band-promo.jpg`, alt: "A Heartwell Ending band promo photo", title: "The band", detail: "Promo photo" },
-	{ image: `${assetBase}/assets/cd-front.jpg`, alt: "Trust Us, We Lie CD case", title: "Trust Us, We Lie", detail: "CD packaging" },
-	{ image: `${assetBase}/assets/cd-disc.jpg`, alt: "Trust Us, We Lie CD and jewel cases", title: "The CD", detail: "Album collection" },
-	{ image: `${assetBase}/assets/vinyl-front.jpg`, alt: "Trust Us, We Lie purple vinyl and sleeve", title: "Purple vinyl", detail: "Album collection" },
-];
+const photos = Array.from({ length: 24 }, (_, index) => {
+	const number = index + 1;
+	return {
+		image: `${assetBase}/assets/images/photo-gallery/ahe-${number}.jpg`,
+		alt: `A Heartwell Ending photo ${number}`,
+		title: `Photo ${number}`,
+	};
+});
 ---
 
 <section class="box photos-box" id="photos">
 	<h2>Photo <em>gallery</em></h2>
-	<div class="section-intro"><p>Band photos and a closer look at the album collection.</p></div>
-	<div class="gallery-grid">
-		{photos.map((photo) => (
-			<div class="media-tile">
-				<img src={photo.image} alt={photo.alt} />
-				<h3>{photo.title}</h3>
-				<p>{photo.detail}</p>
-			</div>
-		))}
+	<div class="section-intro"><p>Photos from A Heartwell Ending.</p></div>
+	<div class="gallery-carousel" data-photo-carousel>
+		<div class="gallery-grid" data-photo-track aria-live="polite">
+			{photos.map((photo, index) => (
+				<article class="media-tile gallery-slide" data-photo-slide data-photo-index={index}>
+					<button class="photo-open" type="button" data-modal="photo" data-image={photo.image} data-title={photo.title} aria-label={`View ${photo.alt} larger`}>
+						<img src={photo.image} alt={photo.alt} loading={index < 2 ? "eager" : "lazy"} />
+						<span class="photo-open-label">View larger</span>
+					</button>
+				</article>
+			))}
+		</div>
+		<div class="gallery-controls" aria-label="Photo gallery navigation">
+			<button class="gallery-arrow" type="button" data-photo-previous aria-label="Previous photos">←</button>
+			<span class="gallery-count" data-photo-count aria-live="polite"></span>
+			<button class="gallery-arrow" type="button" data-photo-next aria-label="Next photos">→</button>
+		</div>
 	</div>
 </section>

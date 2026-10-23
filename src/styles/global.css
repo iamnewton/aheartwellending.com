@@ -1002,6 +1002,79 @@
         object-position:center 20%
     }
 
+    .gallery-carousel {
+        padding: 0 14px 14px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 0;
+    }
+
+    .gallery-slide[hidden] {
+        display: none;
+    }
+
+    .photo-open {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        text-align: left;
+        cursor: zoom-in;
+    }
+
+    .photo-open:focus-visible {
+        outline: 3px solid #65365b;
+        outline-offset: 4px;
+    }
+
+    .photo-open img {
+        aspect-ratio: 4 / 3;
+        object-fit: contain;
+        background: #1b1023;
+    }
+
+    .photo-open-label {
+        display: block;
+        padding: 5px 2px 0;
+        color: #572a78;
+        font-size: 12px;
+        text-decoration: underline;
+    }
+
+    .gallery-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        padding-top: 12px;
+    }
+
+    .gallery-arrow {
+        width: 38px;
+        height: 34px;
+        border: 1px solid #ac91bd;
+        background: #f4eaf2;
+        color: #572a78;
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .gallery-arrow:disabled {
+        opacity: .4;
+        cursor: default;
+    }
+
+    .gallery-count {
+        min-width: 75px;
+        color: #695973;
+        font-size: 12px;
+        text-align: center;
+    }
+
     .gallery-empty {
         display: grid;
         place-items: center;
@@ -1158,6 +1231,24 @@
 
     .modal:has(iframe) .modal-content {
         padding:0
+    }
+
+    .modal.photo-modal .modal-panel {
+        max-width: 1000px;
+    }
+
+    .modal.photo-modal .modal-content {
+        padding: 12px;
+        background: #170e20;
+    }
+
+    .modal-content .photo-modal-image {
+        max-width: 100%;
+        max-height: min(78vh, 900px);
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        margin: 0 auto;
     }
 
     .skip {

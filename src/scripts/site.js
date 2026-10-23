@@ -216,13 +216,21 @@ const modal = document.getElementById('modal'),
 let returnFocus;
 function closeModal() {
 	modal.classList.remove('open');
+	modal.classList.remove('photo-modal');
 	returnFocus?.focus()
 }
 document.querySelectorAll('[data-modal]').forEach(button => button.addEventListener('click', () => {
 	returnFocus = button;
 	document.getElementById('modal-title').textContent = button.dataset.title;
 	content.replaceChildren();
-	if (button.dataset.modal === 'video' && button.dataset.videoId) {
+	modal.classList.toggle('photo-modal', button.dataset.modal === 'photo');
+	if (button.dataset.modal === 'photo' && button.dataset.image) {
+		const img = document.createElement('img');
+		img.src = button.dataset.image;
+		img.alt = button.querySelector('img')?.alt || button.dataset.title;
+		img.className = 'photo-modal-image';
+		content.append(img);
+	} else if (button.dataset.modal === 'video' && button.dataset.videoId) {
 		const frame = document.createElement('iframe');
 		frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(button.dataset.videoId)}?autoplay=1`;
 		frame.title = button.dataset.title;
@@ -260,6 +268,32 @@ modal.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
 	if (e.key === 'Escape' && modal.classList.contains('open'))
 		closeModal()
+});
+document.querySelectorAll('[data-photo-carousel]').forEach(carousel => {
+	const slides = Array.from(carousel.querySelectorAll('[data-photo-slide]'));
+	const previous = carousel.querySelector('[data-photo-previous]');
+	const next = carousel.querySelector('[data-photo-next]');
+	const count = carousel.querySelector('[data-photo-count]');
+	if (!slides.length || !previous || !next || !count) return;
+	let start = 0;
+	const update = () => {
+		slides.forEach((slide, index) => {
+			slide.hidden = index < start || index >= start + 2;
+		});
+		const end = Math.min(start + 2, slides.length);
+		count.textContent = `${start + 1}–${end} of ${slides.length}`;
+		previous.disabled = start === 0;
+		next.disabled = end === slides.length;
+	};
+	previous.addEventListener('click', () => {
+		start = Math.max(0, start - 2);
+		update();
+	});
+	next.addEventListener('click', () => {
+		start = Math.min(Math.max(0, slides.length - 2), start + 2);
+		update();
+	});
+	update();
 });
 document.querySelectorAll('[data-merch-carousel]').forEach(carousel => {
 	const track = carousel.querySelector('[data-merch-track]');
