@@ -9,13 +9,13 @@ type TopEightEntry = { name: string; image?: string; social?: keyof typeof socia
 const assetBase = import.meta.env.BASE_URL;
 const topFriends: TopFriend[] = [
 	{ name: "Tom", image: `${assetBase}/assets/images/top-8/tom.png` },
+	{ name: "Justin", image: `${assetBase}/assets/images/top-8/justin.jpg` },
+	{ name: "Will", image: `${assetBase}/assets/images/top-8/will.jpg` },
+	{ name: "Chris", image: `${assetBase}/assets/images/top-8/chris.png` },
 	{ social: "tiktok" },
 	{ social: "instagram" },
 	{ social: "spotify" },
 	{ social: "appleMusic" },
-	{ name: "Justin" },
-	{ name: "Will" },
-	{ name: "Chris" },
 ];
 const topEight = topFriends.map((friend: TopFriend): TopEightEntry => {
 	if (!friend.social) return friend;
