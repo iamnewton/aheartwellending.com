@@ -212,8 +212,8 @@
     .profile-img {
         display: block;
         width: 100%;
-        aspect-ratio: 1;
-        object-fit: cover;
+        height: auto;
+        aspect-ratio: auto;
         border: 5px solid #130b19;
         background:#130b19
     }
@@ -1534,7 +1534,7 @@
     }
 
     .profile-img {
-        aspect-ratio: 500/331;
+        aspect-ratio: auto;
         object-fit: contain;
         max-height: none;
         border: 4px solid #f3efe9;
