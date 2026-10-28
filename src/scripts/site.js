@@ -92,6 +92,7 @@ if (audioPlayer && trackButtons.length > 0) {
 const boardList = document.getElementById('board-list');
 const savedPosts = JSON.parse(localStorage.getItem('ahe-board-posts') || '[]');
 function addPost(name, message, save) {
+	if (!boardList) return;
 	const li = document.createElement('li'),
 		icon = document.createElement('div'),
 		body = document.createElement('div'),
@@ -115,17 +116,20 @@ function addPost(name, message, save) {
 	}
 }
 savedPosts.forEach(x => addPost(x.name, x.message, false));
-document.getElementById('board-form').addEventListener('submit', e => {
-	e.preventDefault();
-	const name = document.getElementById('board-name'),
-		message = document.getElementById('board-message');
-	addPost(name.value.trim(), message.value.trim(), true);
-	message.value = '';
-	boardList.lastElementChild.scrollIntoView({
-		behavior: 'smooth',
-		block: 'nearest'
-	})
-});
+const boardForm = document.getElementById('board-form');
+if (boardForm) {
+	boardForm.addEventListener('submit', e => {
+		e.preventDefault();
+		const name = document.getElementById('board-name'),
+			message = document.getElementById('board-message');
+		addPost(name.value.trim(), message.value.trim(), true);
+		message.value = '';
+		boardList.lastElementChild.scrollIntoView({
+			behavior: 'smooth',
+			block: 'nearest'
+		})
+	});
+}
 const chatForm = document.getElementById('chat-form');
 if (chatForm) {
 	const chatInput = document.getElementById('chat-input');
