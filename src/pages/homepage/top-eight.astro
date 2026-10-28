@@ -36,7 +36,7 @@ const topEight = topFriends.map((friend: TopFriend): TopEightEntry => {
 								{friend.platform === "TikTok" && <svg viewBox="0 0 24 24"><path d="M19.6 7.1a6.8 6.8 0 0 1-4.2-1.5v8.1a6.2 6.2 0 1 1-5.4-6.1v3.4a2.8 2.8 0 1 0 2 2.7V2h3.4a6.7 6.7 0 0 0 4.2 5.1v0Z" /></svg>}
 								{friend.platform === "Instagram" && <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle class="icon-dot" cx="17.5" cy="6.8" r="1" /></svg>}
 								{friend.platform === "Spotify" && <svg viewBox="0 0 24 24"><circle class="icon-fill" cx="12" cy="12" r="10" /><path class="spotify-mark" d="M6.2 9.1c3.9-1.2 8.6-.8 11.8 1.1M7 12.2c3.2-1 7.2-.6 9.8.9m-8.9 2c2.5-.7 5.5-.4 7.6.7" /></svg>}
-								{friend.platform === "Apple Music" && <svg viewBox="0 0 24 24"><path class="apple-fill" d="M20 3.2v13.1a3.2 3.2 0 1 1-1.8-2.9V7.1l-8.4 1.8v9.1A3.2 3.2 0 1 1 8 15.1V6.2c0-.8.5-1.5 1.3-1.7l8.6-1.9A1.7 1.7 0 0 1 20 4.3v-1.1Z" /></svg>}
+								{friend.platform === "Apple" && <svg viewBox="0 0 24 24"><path class="apple-fill" d="M20 3.2v13.1a3.2 3.2 0 1 1-1.8-2.9V7.1l-8.4 1.8v9.1A3.2 3.2 0 1 1 8 15.1V6.2c0-.8.5-1.5 1.3-1.7l8.6-1.9A1.7 1.7 0 0 1 20 4.3v-1.1Z" /></svg>}
 							</div>
 							<span>{friend.platform}</span>
 						</a>

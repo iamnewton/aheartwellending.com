@@ -25,7 +25,7 @@ export const socialLinks = {
 		icon: "spotify",
 	},
 	appleMusic: {
-		platform: "Apple Music",
+		platform: "Apple",
 		handle: "A Heartwell Ending",
 		href: "https://music.apple.com/us/artist/a-heartwell-ending/168815027",
 		icon: "apple-music",
