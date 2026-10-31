@@ -1,0 +1,59 @@
+/* Component styles moved from global.css. */
+.top-eight {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+    text-align:center
+}
+.friend {
+    min-width:0
+}
+.friend-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin-bottom: 4px;
+}
+.friend span {
+    font-size: 12px;
+    line-height: 1.1;
+    display: block;
+    overflow-wrap: anywhere;
+    color: #552a72;
+    font-weight:bold
+}
+.friend-link {
+    display: block;
+    text-decoration: none;
+}
+.friend-icon {
+    width: 100%;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    margin-bottom: 4px;
+    color: white;
+}
+.friend-icon svg {
+    width: 31px;
+    height: 31px;
+}
+.friend-link:hover .friend-icon {
+    filter: brightness(.88);
+}
+.friend-link:focus-visible {
+    outline: 2px solid #552a72;
+    outline-offset: 2px;
+}
+.friend .friend-name {
+    margin-top: 2px;
+    font-weight: normal;
+    color: #6f5680;
+}
+.sparkle {
+    color:#913cbb
+}
+.friend span {
+    color: #5c3654
+}

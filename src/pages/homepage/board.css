@@ -1,0 +1,85 @@
+/* Component styles moved from global.css. */
+.board-list {
+    padding: 0;
+    margin: 0;
+    list-style:none
+}
+.board-list li {
+    padding: 11px 13px;
+    border-bottom: 1px solid #e4dbe9;
+    display: flex;
+    gap: 10px;
+    align-items:flex-start
+}
+.board-list li:nth-child(even) {
+    background:#faf7fc
+}
+.board-icon {
+    width: 33px;
+    height: 33px;
+    flex: none;
+    background: #e8d6f3;
+    color: #673188;
+    display: grid;
+    place-items: center;
+    font: bold 18px Georgia, serif;
+    border:1px solid #ba9bce
+}
+.board-list b {
+    display: block;
+    font-size:14px
+}
+.board-list small {
+    color: #6e5c76;
+    font-size:12px
+}
+.board-list p {
+    font-size: 14px;
+    margin: 3px 0 0;
+    overflow-wrap:anywhere
+}
+.form-row {
+    display: flex;
+    gap:7px
+}
+.form-row input {
+    flex: 1;
+    min-width:0
+}
+.form-row input, .board-form textarea {
+    border: 1px solid #af99bd;
+    padding: 8px;
+    background: #fff;
+    color:#21132b
+}
+.board-form {
+    padding: 12px;
+    background: #f5eef9;
+    border-top:1px solid #d9c8e3
+}
+.board-form textarea {
+    width: 100%;
+    min-height: 67px;
+    resize: vertical;
+    margin:8px 0 5px
+}
+@media (max-width: 640px) {
+    .board-box {
+        order:3
+    }
+}
+.board-icon {
+    background: #eee0e9;
+    color: #78446c;
+    border-color:#ccadc2
+}
+.board-list li:nth-child(even) {
+    background:#faf6f8
+}
+.board-form {
+    background: #f5eef2;
+    border-color:#dacbd5
+}
+.board-form textarea, .form-row input {
+    border-color:#bda4b5
+}

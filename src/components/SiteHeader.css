@@ -1,0 +1,258 @@
+/* Component styles moved from global.css. */
+.utility {
+        background: #160d20;
+        color: #bda9ce;
+        min-height: 34px;
+        padding: 6px 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 12px;
+        letter-spacing: .05em;
+        text-transform:uppercase
+    }
+.utility strong {
+        color:#fff
+    }
+.banner {
+        height: 230px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        position: relative;
+        overflow: hidden;
+        padding: 24px 46px;
+        background: radial-gradient(circle at 80% 30%, #663c84 0, #301943 48%, #180d23 100%);
+        border-bottom:5px solid #a06bc1
+    }
+.banner:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: .12;
+        background-image: repeating-linear-gradient(0deg, transparent 0 4px, #fff 5px 6px);
+        pointer-events:none
+    }
+.banner-wordmark {
+        position: relative;
+        color: #fff;
+        text-transform: uppercase;
+        font-family: Georgia, serif;
+        font-weight: 900;
+        letter-spacing: -.065em;
+        font-size: clamp(40px, 6.5vw, 86px);
+        line-height: .84;
+        text-shadow:4px 5px 0 #0c0711, 0 0 23px #b46cd3
+    }
+.banner-wordmark span {
+        display:block
+    }
+.banner-wordmark small {
+        display: block;
+        margin-top: 18px;
+        letter-spacing: .32em;
+        font: 700 13px Arial, sans-serif;
+        color: #dbb7eb;
+        text-shadow:none
+    }
+.banner .crest {
+        width: 165px;
+        height: 165px;
+        object-fit: contain;
+        filter: drop-shadow(0 8px 12px #0009);
+        position:relative
+    }
+.banner-stamp {
+        position: absolute;
+        right: 24px;
+        bottom: 12px;
+        color: #eacdf6;
+        font: 11px 'Courier New', monospace;
+        transform:rotate(-3deg)
+    }
+.main-nav {
+        display: flex;
+        flex-wrap: wrap;
+        background: #44205e;
+        border-bottom: 4px solid #1e1029;
+        padding:0 10px
+    }
+.main-nav a {
+        display: block;
+        color: #fff;
+        padding: 11px 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: .08em;
+        font-weight: 900;
+        border-right:1px solid #ffffff26
+    }
+.main-nav a:hover, .main-nav a:focus-visible {
+        background:#7b4a9b
+    }
+.welcome {
+        background: #f2e7f8;
+        border-bottom: 1px solid #d4c2df;
+        padding: 9px 22px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font: 13px 'Courier New', monospace;
+        color:#4a2d5f
+    }
+.welcome b {
+        color:#38145a
+    }
+
+
+    @media (max-width: 850px) {.banner {
+            padding: 22px;
+            height:190px
+        }
+.banner .crest {
+            width: 125px;
+            height:125px
+        }}
+
+
+    @media (max-width: 640px) {.banner {
+            height: 172px;
+            padding:18px
+        }
+.banner-wordmark {
+            font-size:clamp(34px, 10vw, 58px)
+        }
+.banner-wordmark small {
+            font-size: 10px;
+            letter-spacing:.16em
+        }
+.banner .crest {
+            width: 90px;
+            height:90px
+        }
+.banner-stamp {
+            display:none
+        }
+.main-nav a {
+            font-size: 12px;
+            padding:10px
+        }
+.welcome {
+            display:block
+        }
+.welcome span:last-child {
+            display: block;
+            margin-top:3px
+        }
+.utility {
+            font-size:10px
+        }}
+
+
+    @media (max-width: 390px) {.banner .crest {
+            display:none
+        }
+.main-nav a {
+            padding:9px 8px
+        }}
+.utility {
+        background: #251c22;
+        color:#dfd1d8
+    }
+.utility strong {
+        color: #fff
+    }
+.banner {
+        height: 245px;
+        background: #f5f1eb;
+        border-bottom: 5px solid #6c3c63;
+        padding: 15px 38px;
+        justify-content: space-between
+    }
+.banner:before {
+        display:none
+    }
+.banner-brand {
+        z-index: 1;
+        min-width: 0;
+        flex:1
+    }
+.banner-logo {
+        display: block;
+        width: min(100%, 690px);
+        height: auto;
+        max-height: 135px;
+        object-fit: contain;
+        object-position:left center
+    }
+.banner-sub {
+        display: block;
+        color: #6b425e;
+        letter-spacing: .22em;
+        font: 700 12px 'Courier New', monospace;
+        margin-top:10px
+    }
+.banner-album {
+        height: 215px;
+        width: 290px;
+        object-fit: cover;
+        object-position: left center;
+        mix-blend-mode: multiply;
+        flex:none
+    }
+.banner-stamp {
+        color: #63475b;
+        right: 22px;
+        bottom: 7px
+    }
+.main-nav {
+        background: #281f25;
+        border-bottom-color:#6c3c63
+    }
+.main-nav a:hover, .main-nav a:focus-visible {
+        background: #66345b
+    }
+.welcome {
+        background: #eee5e8;
+        color: #4b3946;
+        border-bottom-color:#cbbac3
+    }
+.welcome b {
+        color: #66345b
+    }
+
+
+    @media (max-width: 850px) {.banner {
+            height: 215px;
+            padding:18px
+        }
+.banner-album {
+            height: 184px;
+            width:210px
+        }}
+
+
+    @media (max-width: 640px) {.banner {
+            height: 151px;
+            padding:12px 14px
+        }
+.banner-logo {
+            max-height:90px
+        }
+.banner-album {
+            height: 120px;
+            width:110px
+        }
+.banner-sub {
+            font-size: 9px;
+            letter-spacing: .08em;
+            margin-top:5px
+        }}
+
+
+    @media (max-width: 390px) {.banner-album {
+            width: 80px;
+            height:100px
+        }}

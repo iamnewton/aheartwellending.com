@@ -1,0 +1,119 @@
+/* Component styles moved from global.css. */
+.player {
+    background: #21142c;
+    color: #f6eefb;
+    border: 1px solid #7b5d91;
+    padding:13px
+}
+.player-head {
+    display: flex;
+    gap: 10px;
+    align-items:center
+}
+.player-art {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+    border:2px solid #b9a0ce
+}
+.player-title {
+    font-weight: 800;
+    font-size:15px
+}
+.player-sub {
+    font: 12px 'Courier New', monospace;
+    color:#c4a9d8
+}
+.player-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin:12px 0 6px
+}
+.player-buttons button {
+    background: #d3b1e8;
+    color: #24112f;
+    border: 1px solid #fff;
+    width: 33px;
+    height: 31px;
+    font-weight:900
+}
+.player-buttons button:hover {
+    background:#fff
+}
+.progress {
+    height: 8px;
+    background: #100a16;
+    border: 1px solid #6f4e84;
+    flex: 1;
+    min-width: 24px;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+}
+.progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: #c78be5;
+    pointer-events: none;
+}
+.player-buttons .progress {
+    width: auto;
+    height: 8px;
+    background: #100a16;
+    border: 1px solid #6f4e84;
+}
+.player-buttons .progress:hover {
+    background: #100a16;
+}
+.progress:focus-visible {
+    outline: 2px solid #f6eefb;
+    outline-offset: 3px;
+}
+.tracklist {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style:none
+}
+.tracklist button {
+    background: none;
+    color: #f1e5f8;
+    border: 0;
+    text-align: left;
+    width: 100%;
+    padding: 7px;
+    border-top: 1px solid #ffffff2b;
+    font-size:13px
+}
+.tracklist button:hover {
+    background:#54316b
+}
+.tracklist button span {
+    color: #d1a8e8;
+    margin-right: 7px;
+    font: 12px 'Courier New', monospace
+}
+.player-note {
+    min-height: 17px;
+    color: #d0aedf;
+    font-size: 12px;
+    margin-top:8px
+}
+.player {
+    background: #262029;
+    border-color:#78576e
+}
+.player-buttons button {
+    background: #ead5e4;
+    color:#392839
+}
+.player-buttons button:hover {
+    background:#fff
+}
+.progress span {
+    background:#ad75a1
+}
+.tracklist button:hover {
+    background: #594052
+}

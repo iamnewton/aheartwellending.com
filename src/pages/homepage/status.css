@@ -1,0 +1,16 @@
+/* Component styles moved from global.css. */
+.status {
+    font: 14px 'Courier New', monospace;
+    background: #f6f1f9;
+    padding: 10px;
+    border-left:4px solid #8155a4
+}
+@media (max-width: 640px) {
+    .status-box {
+        order:9
+    }
+}
+.status {
+    background: #f6f1f1;
+    border-color: #8a527e
+}

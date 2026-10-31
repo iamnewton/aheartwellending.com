@@ -1,0 +1,21 @@
+/* Component styles moved from global.css. */
+.footer {
+        background: #1e1129;
+        color: #c5b2d0;
+        padding: 22px;
+        text-align: center;
+        font: 12px 'Courier New', monospace
+    }
+.footer b {
+        color:#fff
+    }
+.footer a {
+        color:#e5c6f7
+    }
+.footer {
+        background: #292028;
+        color:#dbcbd5
+    }
+.footer a {
+        color:#e7c7db
+    }

@@ -22,6 +22,7 @@ const topEight = topFriends.map((friend: TopFriend): TopEightEntry => {
 	const social = socialLinks[friend.social];
 	return { ...friend, ...social, name: social.platform };
 });
+import "./top-eight.css";
 ---
 
 <section class="box top-box" id="top8">

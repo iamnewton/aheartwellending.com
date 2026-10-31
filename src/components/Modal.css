@@ -1,0 +1,73 @@
+/* Component styles moved from global.css. */
+.modal {
+        position: fixed;
+        inset: 0;
+        background: #15091dcc;
+        z-index: 10;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding:20px
+    }
+.modal-panel {
+        background: #fff;
+        max-width: 460px;
+        width: 100%;
+        border: 3px solid #5d2d85;
+        box-shadow:7px 7px 0 #12081d
+    }
+.modal-head {
+        background: #44205e;
+        color: #fff;
+        padding: 10px 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        text-transform:uppercase
+    }
+.modal-head button {
+        border: 1px solid #e5c4f5;
+        background: #fff;
+        color: #301240;
+        font-weight:bold
+    }
+.modal-content {
+        padding:20px
+    }
+.modal-content p {
+        margin:0 0 14px
+    }
+.modal-content img {
+        max-width: 100%;
+        max-height: 270px;
+        object-fit: contain;
+        display: block;
+        margin:0 auto 14px
+    }
+.modal-content iframe {
+        display:block;
+        width:100%;
+        aspect-ratio:16/9;
+        border:0
+    }
+.modal:has(iframe) .modal-panel {
+        max-width:800px
+    }
+.modal:has(iframe) .modal-content {
+        padding:0
+    }
+.modal-content .photo-modal-image {
+        max-width: 100%;
+        max-height: min(78vh, 900px);
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+.modal-panel {
+        border-color:#67385e
+    }
+.modal-head {
+        background: #512d49
+    }
